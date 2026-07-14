@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026《露癡x袋著月光》中秋禮盒訂購單</title>
+  <!-- 載入 LINE LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <!-- 載入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入日系可愛手繪風字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Zen Maru Gothic', 'Noto Sans TC', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#FFFDF9] min-h-screen flex items-center justify-center p-4 antialiased selection:bg-orange-100">
+
+  <!-- 可愛圓潤外框卡片 -->
+  <div class="bg-white rounded-[2rem] shadow-[0_10px_30px_rgba(230,210,180,0.4)] w-full max-w-lg overflow-hidden border-4 border-[#FDF2E2] my-4">
+    
+    <!-- 橫幅 Banner - 改為溫馨蛋黃橘黃色 -->
+    <div class="bg-[#FFF4E0] p-8 text-center border-b-4 border-dashed border-[#FADBB0] relative">
+      <div class="absolute top-3 right-4 bg-[#FF9F45] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">2026 中秋限定</div>
+      <div class="text-3xl mb-1">🎑✨</div>
+      <h1 class="text-2xl font-black text-[#B25329] tracking-widest mb-1">《露癡 x 袋著月光》</h1>
+      <p class="text-xs font-bold text-[#D88556] tracking-wider">中秋手作禮盒訂購單</p>
+    </div>
+
+    <!-- 文案介紹區 - 溫柔日系插畫雜誌感 -->
+    <div class="p-6 bg-[#FFFDF9] text-[#7A6053] text-sm leading-relaxed space-y-4">
+      <p class="font-bold text-center text-[#C86B3E] text-base mb-2">✨「最好的節日，送給最在乎的人。」✨</p>
+      <p class="text-xs">不流於俗套的包裝，只給最真材實料的內在。今年我們選用觸感溫潤的紙漿盒，搭配台灣在地人情味的茄芷袋，回歸自然的環保與純粹。🍃</p>
+      <p class="text-xs">每顆獨立包裝，無論是在辦公室分享，還是帶去野餐賞月。不僅乾淨衛生、更好保存，隨手放包包帶出門也超方便。🎒</p>
+      
+      <!-- 產品介紹小卡 -->
+      <div class="bg-white p-4 rounded-2xl border-2 border-[#F9E8D2] shadow-sm space-y-3">
+        <p class="font-bold text-[#B25329] flex items-center gap-1">🌕 減糖月娘酥 I 減糖芋頭酥 🌕</p>
+        
+        <div class="space-y-2 text-xs text-[#8A7060]">
+          <div class="bg-[#FFF9F2] p-2.5 rounded-xl">
+            <span class="font-bold text-[#C86B3E]">🐇 月娘酥 * 3：</span>
+            藍斯可綠豆餡交織出微甜微鹹的完美比例，外層撒上黃豆粉，細緻的大人感風味。
+          </div>
+          <div class="bg-[#FFF9F2] p-2.5 rounded-xl">
+            <span class="font-bold text-[#C86B3E]">🐇 芋頭酥 * 3：</span>
+            自製減糖芋泥餡搭配金黃鹹蛋黃，綿密甜香與油脂香氣在嘴裡化開，最台味的經典！
+          </div>
+        </div>
+        
+        <div class="text-[11px] text-[#A68877] pt-1 border-t border-dashed border-[#F2DCC4]">
+          🌑 一盒 6 入（芋頭/月娘各3）<br>
+          🌘 原價$580 <span class="text-[#E76161] font-bold">預購特惠價：$540 / 盒</span><br>
+          🌗 蛋奶素，無添加防腐劑（常溫3天、冷藏7天、冷凍14天）
+        </div>
+      </div>
+    </div>
+
+    <!-- 表單填寫區 -->
+    <div class="p-6 bg-white">
+      <!-- 載入中提示 -->
+      <div id="loading" class="text-center text-[#B5998C] py-8 space-y-3">
+        <div class="animate-bounce text-3xl">🐇...🌕</div>
+        <p class="text-xs font-bold tracking-wider">正在載入 LINE 資訊，請稍候小兔...</p>
+      </div>
+
+      <!-- 訂購表單 -->
+      <form id="orderForm" class="hidden space-y-5">
+        <input type="hidden" id="lineUid" name="lineUid">
+
+        <!-- 顧客姓名 -->
+        <div>
+          <label class="block text-xs font-bold text-[#7A6053] mb-1">💝 訂購人姓名 <span class="text-[#E76161]">*</span></label>
+          <input type="text" id="name" required class="w-full px-4 py-2.5 bg-[#FFFDF9] border-2 border-[#F2DCC4] rounded-2xl focus:outline-none focus:border-[#FF9F45] text-[#5C463C] text-sm transition-all placeholder-[#C5B3A9]">
+        </div>
+
+        <!-- 聯絡電話 -->
+        <div>
+          <label class="block text-xs font-bold text-[#7A6053] mb-1">📞 聯絡電話 <span class="text-[#E76161]">*</span></label>
+          <input type="tel" id="phone" required placeholder="0912345678" class="w-full px-4 py-2.5 bg-[#FFFDF9] border-2 border-[#F2DCC4] rounded-2xl focus:outline-none focus:border-[#FF9F45] text-[#5C463C] text-sm transition-all placeholder-[#C5B3A9]">
+        </div>
+
+        <!-- 禮盒數量 -->
+        <div>
+          <label class="block text-xs font-bold text-[#7A6053] mb-1">🥮 禮盒訂購數量 (盒) <span class="text-[#E76161]">*</span></label>
+          <input type="number" id="quantity" min="1" value="1" required class="w-full px-4 py-2.5 bg-[#FFFDF9] border-2 border-[#F2DCC4] rounded-2xl focus:outline-none focus:border-[#FF9F45] text-[#5C463C] text-sm font-bold transition-all">
+        </div>
+
+        <!-- 取貨方式 -->
+        <div>
+          <label class="block text-xs font-bold text-[#7A6053] mb-2">📦 取貨方式 <span class="text-[#E76161]">*</span></label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex flex-col items-center justify-center p-3 bg-[#FFFDF9] border-2 border-[#F2DCC4] rounded-2xl cursor-pointer hover:bg-[#FFF9F2] transition-all text-sm font-bold text-[#7A6053] select-none has-[:checked]:border-[#FF9F45] has-[:checked]:bg-[#FFF4E0] has-[:checked]:text-[#B25329]">
+              <input type="radio" name="deliveryMethod" value="面交" checked class="sr-only" onchange="toggleDeliveryFields()">
+              <span>🤝 南崁面交</span>
+            </label>
+            <label class="flex flex-col items-center justify-center p-3 bg-[#FFFDF9] border-2 border-[#F2DCC4] rounded-2xl cursor-pointer hover:bg-[#FFF9F2] transition-all text-sm font-bold text-[#7A6053] select-none has-[:checked]:border-[#FF9F45] has-[:checked]:bg-[#FFF4E0] has-[:checked]:text-[#B25329]">
+              <input type="radio" name="deliveryMethod" value="宅配" class="sr-only" onchange="toggleDeliveryFields()">
+              <span>🚚 冷藏宅配</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 動態欄位：面交時間選擇 -->
+        <div id="meetupTimeContainer" class="bg-[#FFFDF9] p-4 rounded-2xl border border-dashed border-[#F2DCC4]">
+          <label class="block text-xs font-bold text-[#7A6053] mb-1">📍 請選擇面交時間 (地點：711勁賀門市) <span class="text-[#E76161]">*</span></label>
+          <select id="meetupTime" class="w-full px-3 py-2 bg-white border-2 border-[#F2DCC4] rounded-xl focus:outline-none focus:border-[#FF9F45] text-[#5C463C] text-sm transition-all">
+            <option value="9/10（16:30）面交">9/10（16:30）</option>
+            <option value="9/16（16:30）面交">9/16（16:30）</option>
+            <option value="9/22（16:30）面交">9/22（16:30）</option>
+          </select>
+        </div>
+
+        <!-- 動態欄位：宅配地址輸入 -->
+        <div id="addressContainer" class="hidden bg-[#FFFDF9] p-4 rounded-2xl border border-dashed border-[#F2DCC4]">
+          <label class="block text-xs font-bold text-[#7A6053] mb-1">🏠 收件地址 <span class="text-[#E76161]">*</span></label>
+          <input type="text" id="address" placeholder="請輸入收件人完整地址" class="w-full px-4 py-2.5 bg-white border-2 border-[#F2DCC4] rounded-xl focus:outline-none focus:border-[#FF9F45] text-[#5C463C] text-sm transition-all placeholder-[#C5B3A9]">
+          <p class="text-[11px] text-[#D88556] mt-2 font-bold">⚠️ 天氣炎熱，一律採冷藏宅配確保品質。9/9起陸續寄出。</p>
+        </div>
+
+        <!-- 計費明細區 - 改為超可愛牛奶紙盒感黃底 -->
+        <div class="bg-[#FFFBEB] border-2 border-[#FCE8B3] rounded-2xl p-4 text-sm space-y-2">
+          <div class="flex justify-between text-[#7A6053]">
+            <span>禮盒小計 ($540 × <span id="summaryQty" class="font-bold text-[#B25329]">1</span>):</span>
+            <span class="font-bold" id="summarySubtotal">$540</span>
+          </div>
+          <div class="flex justify-between text-[#7A6053]">
+            <span>可愛運費:</span>
+            <span class="font-bold" id="summaryShipping">$0</span>
+          </div>
+          <div class="border-t border-dashed border-[#EED08A] pt-2 flex justify-between font-bold text-[#5C463C] text-base">
+            <span class="text-[#B25329]">🌟 應付總金額:</span>
+            <span class="text-xl text-[#C86B3E]" id="summaryTotal">$540</span>
+          </div>
+        </div>
+
+        <!-- 提交按鈕 - 改為大圓角胖胖按鈕 -->
+        <button type="submit" class="w-full bg-[#FF9F45] hover:bg-[#F68923] text-white font-bold py-4 rounded-2xl transition duration-300 shadow-[0_4px_12px_rgba(255,159,69,0.3)] transform active:scale-[0.98] text-base tracking-wider">
+          完成訂購，把月光袋走！🐾
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ⚠️ 請填入您的 LINE LIFF ID 與 Google GAS Web App 網址 ⚠️
+    const LIFF_ID = '2010696066-d8VuPFPR'; 
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbwfDyMdOget68pEmQVUbroEMQP9PoMZdtYr3_qDFy7BgG-hLoB3CpJAV1lIoHF-uglJHQ/exec'; 
+
+    const PRICE_PER_BOX = 540;
+
+    async function initializeLiff() {
+      try {
+        await liff.init({ liffId: LIFF_ID });
+        if (!liff.isLoggedIn()) {
+          liff.login();
+        } else {
+          const profile = await liff.getProfile();
+          document.getElementById('lineUid').value = profile.userId;
+
+          document.getElementById('loading').classList.add('hidden');
+          document.getElementById('orderForm').classList.remove('hidden');
+          calculateTotal();
+        }
+      } catch (error) {
+        console.error('LIFF 初始化失敗', error);
+        alert('小兔找不到您的 LINE 帳號資訊，請在 LINE 官方帳號內打開唷！');
+      }
+    }
+
+    function toggleDeliveryFields() {
+      const method = document.querySelector('input[name="deliveryMethod"]:checked').value;
+      const meetupContainer = document.getElementById('meetupTimeContainer');
+      const addressContainer = document.getElementById('addressContainer');
+      const addressInput = document.getElementById('address');
+
+      if (method === '面交') {
+        meetupContainer.classList.remove('hidden');
+        addressContainer.classList.add('hidden');
+        addressInput.removeAttribute('required');
+      } else {
+        meetupContainer.classList.add('hidden');
+        addressContainer.classList.remove('hidden');
+        addressInput.setAttribute('required', 'required');
+      }
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const qty = parseInt(document.getElementById('quantity').value) || 0;
+      const method = document.querySelector('input[name="deliveryMethod"]:checked').value;
+      
+      let subtotal = qty * PRICE_PER_BOX;
+      let shipping = 0;
+
+      if (method === '宅配') {
+        if (qty >= 15) {
+          shipping = 0;
+        } else if (qty >= 6) {
+          shipping = 300;
+        } else if (qty >= 3) {
+          shipping = 240;
+        } else if (qty >= 1) {
+          shipping = 180;
+        }
+      }
+
+      let total = subtotal + shipping;
+
+      document.getElementById('summaryQty').innerText = qty;
+      document.getElementById('summarySubtotal').innerText = `$${subtotal}`;
+      document.getElementById('summaryShipping').innerText = shipping === 0 && method === '宅配' && qty >= 15 ? '免運 ✨' : `$${shipping}`;
+      document.getElementById('summaryTotal').innerText = `$${total}`;
+
+      return { shipping, total };
+    }
+
+    document.getElementById('quantity').addEventListener('input', calculateTotal);
+
+    document.getElementById('orderForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = e.target.querySelector('button');
+      submitBtn.disabled = true;
+      submitBtn.innerText = '小兔正在排單中... 🐇';
+
+      const method = document.querySelector('input[name="deliveryMethod"]:checked').value;
+      const qty = parseInt(document.getElementById('quantity').value) || 0;
+      const { shipping, total } = calculateTotal();
+
+      let addressValue = method === '面交' ? document.getElementById('meetupTime').value : document.getElementById('address').value;
+
+      const orderData = {
+        lineUid: document.getElementById('lineUid').value,
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        quantity: qty,
+        deliveryMethod: method,
+        address: addressValue,
+        shipping: shipping,
+        total: total
+      };
+
+      try {
+        const response = await fetch(GAS_URL, {
+          method: 'POST',
+          body: JSON.stringify(orderData)
+        });
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+          alert('🎉 訂購資料已成功傳給小兔！我們將透過 LINE 發送精美電子收據給您唷！');
+          liff.closeWindow();
+        } else {
+          alert('噢不！系統寫入失敗：' + result.message);
+          submitBtn.disabled = false;
+          submitBtn.innerText = '完成訂購，把月光袋走！🐾';
+        }
+      } catch (error) {
+        console.error('API 連線失敗', error);
+        alert('連線似乎有點忙碌，請稍候再試一次看看！');
+        submitBtn.disabled = false;
+        submitBtn.innerText = '完成訂購，把月光袋走！🐾';
+      }
+    });
+
+    initializeLiff();
+  </script>
+</body>
+</html>
